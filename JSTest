@@ -8,48 +8,48 @@ Assessment Requirements
 4. For good measure, getTotalSupply() should return the number of NFT's you have created
 */
 
-//Create a variable to hold your NFTs
-let nftCollection = [];
+// Create a variable to hold your NFTs
+let nfts = []; // This will be an array to hold NFT objects
 
-// This function will take in some values as parameters,
-// create an NFT object using the parameters passed to it for its metadata,
-// and store it in the array above.
-function mintNFT(name, creator, description, dateCreated) {
-    const nft = {
+// Function to mint a new NFT
+function mintNFT(name, artist, dateCreated, description) {
+    // Create an NFT object with the given metadata
+    let nft = {
         name: name,
-        creator: creator,
-        description: description,
-        dateCreated: dateCreated
+        artist: artist,
+        dateCreated: dateCreated,
+        description: description
     };
-    nftCollection.push(nft);
+    // Store the NFT object in the array
+    nfts.push(nft);
 }
 
-// Create a "loop" that will go through an "array" of NFTs
-// and print their metadata with console.log()
+// Function to list all NFTs
 function listNFTs() {
-    nftCollection.forEach((nft, index) => {
-        console.log(`NFT #${index + 1}`);
-        console.log(`Name: ${nft.name}`);
-        console.log(`Creator: ${nft.creator}`);
-        console.log(`Description: ${nft.description}`);
-        console.log(`Date Created: ${nft.dateCreated}`);
-        console.log('------------------------');
-    });
+    for (let i = 0; i < nfts.length; i++) {
+        console.log("NFT #" + (i + 1));
+        console.log("Name: " + nfts[i].name);
+        console.log("Artist: " + nfts[i].artist);
+        console.log("Date Created: " + nfts[i].dateCreated);
+        console.log("Description: " + nfts[i].description);
+        console.log("-------------------------");
+    }
 }
 
-// Print the total number of NFTs we have minted to the console
+// Function to get the total supply of NFTs
 function getTotalSupply() {
-    return nftCollection.length;
+    return nfts.length;
 }
 
 // Call your functions below this line
 
-// Minting some NFTs
-mintNFT("NFT One", "Alice", "This is the first NFT", "2023-01-01");
-mintNFT("NFT Two", "Bob", "This is the second NFT", "2023-02-01");
+// Example of minting some NFTs
+mintNFT("Sunset Bliss", "Alice", "2024-01-01", "A beautiful sunset over the mountains.");
+mintNFT("Ocean Waves", "Bob", "2024-02-15", "The calming waves of the ocean.");
+mintNFT("City Lights", "Charlie", "2024-03-10", "The vibrant city lights at night.");
 
-// Listing all NFTs
+// List all NFTs
 listNFTs();
 
-// Printing the total number of NFTs minted
-console.log(`Total Supply: ${getTotalSupply()}`);
+// Print the total number of NFTs minted
+console.log("Total Supply: " + getTotalSupply());
